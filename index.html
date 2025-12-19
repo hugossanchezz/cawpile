@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAWPILE Calculator - Valoración de Libros y Películas</title>
+    <link rel="stylesheet" href="./cawpile.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>CAWPILE Calculator</h1>
+            <p class="subtitle">Sistema de valoración para libros y películas</p>
+        </header>
+
+        <section class="method-explanation">
+            <h3>¿Qué es el método CAWPILE?</h3>
+            <p>CAWPILE es un sistema para valorar libros y películas de manera estructurada evaluando 7 categorías:</p>
+            <ul>
+                <li><span class="acronym">C</span>: <strong>Personajes</strong> (Characters) - Desarrollo, profundidad y
+                    credibilidad.</li>
+                <li><span class="acronym">A</span>: <strong>Atmósfera</strong> (Atmosphere) - Ambiente, mundo y
+                    sensaciones que evoca.</li>
+                <li><span class="acronym">W</span>: <strong>Escritura/Dirección</strong> (Writing/Dirección) - Calidad
+                    narrativa o cinematográfica.</li>
+                <li><span class="acronym">P</span>: <strong>Trama</strong> (Plot) - Estructura, coherencia y desarrollo
+                    de la historia.</li>
+                <li><span class="acronym">I</span>: <strong>Intriga</strong> (Intrigue) - Capacidad de mantener el
+                    interés y la curiosidad.</li>
+                <li><span class="acronym">L</span>: <strong>Lógica</strong> (Logic) - Consistencia interna y
+                    credibilidad de los eventos.</li>
+                <li><span class="acronym">E</span>: <strong>Disfrute</strong> (Enjoyment) - Placer personal
+                    experimentado.</li>
+            </ul>
+            <p>Asigna una nota del 1 al 10 a cada categoría, luego el sistema calculará la puntuación promedio sobre 10.
+                Si necesitas la puntuación sobre 5, el sistema la dividirá entre 2 automáticamente.</p>
+        </section>
+
+        <form id="cawpileForm">
+            <div class="calculator-form">
+                <div class="form-group">
+                    <label for="characters"><span class="category-name">C: Personajes</span></label>
+                    <input type="number" id="characters" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="atmosphere"><span class="category-name">A: Atmósfera</span></label>
+                    <input type="number" id="atmosphere" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="writing"><span class="category-name">W: Escritura/Dirección</span></label>
+                    <input type="number" id="writing" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plot"><span class="category-name">P: Trama</span></label>
+                    <input type="number" id="plot" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="intrigue"><span class="category-name">I: Intriga</span></label>
+                    <input type="number" id="intrigue" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="logic"><span class="category-name">L: Lógica</span></label>
+                    <input type="number" id="logic" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enjoyment"><span class="category-name">E: Disfrute</span></label>
+                    <input type="number" id="enjoyment" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
+                        required>
+                </div>
+            </div>
+
+            <div class="scale-selector">
+                <div class="scale-option">
+                    <input type="radio" id="scale10" name="scale" value="10" checked>
+                    <label for="scale10">Resultado sobre 10</label>
+                </div>
+                <div class="scale-option">
+                    <input type="radio" id="scale5" name="scale" value="5">
+                    <label for="scale5">Resultado sobre 5</label>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" id="calculateBtn">Calcular puntuación</button>
+                <button type="button" id="resetBtn">Restablecer</button>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                Por favor, asegúrate de que todas las notas estén entre 1 y 10.
+            </div>
+        </form>
+
+        <div class="result-container" id="resultContainer">
+            <h2 class="result-title">Tu puntuación CAWPILE</h2>
+            <div class="score-container">
+                <div class="score-box score-10">
+                    <div class="score-label">Puntuación sobre 10</div>
+                    <div class="score-value" id="score10">0.0</div>
+                    <div class="score-description">Promedio de las 7 categorías</div>
+                </div>
+                <div class="score-box score-5">
+                    <div class="score-label">Puntuación sobre 5</div>
+                    <div class="score-value" id="score5">0.0</div>
+                    <div class="score-description">Puntuación sobre 10 dividida entre 2</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>CAWPILE Calculator v1.0 - Método de valoración para libros y películas</p>
+            <p>Introduce notas del 1 al 10 en cada categoría y obtén tu puntuación promedio.</p>
+        </footer>
+    </div>
+
+    <script src="./cawpile.js"></script>
+</body>
+
+</html>
