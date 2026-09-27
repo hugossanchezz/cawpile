@@ -1,130 +1,164 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAWPILE Calculator - Valoración de Libros y Películas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CAWPILE Calculator - Valora libros y películas de forma estructurada en 7 categorías.">
+    <meta name="theme-color" content="#FF6F59">
+    <title>CAWPILE · Valora libros y películas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="./cawpile.css">
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>CAWPILE Calculator</h1>
-            <p class="subtitle">Sistema de valoración para libros y películas</p>
+    <div class="app-shell">
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="topbar-inner">
+                <div class="brand">
+                    <span class="brand-mark" aria-hidden="true">C</span>
+                    <span class="brand-text">
+                        <strong>CAWPILE</strong>
+                        <small>Books &amp; Films rating</small>
+                    </span>
+                </div>
+                <div class="topbar-actions">
+                    <div class="progress-mini" id="progressMini" title="Categorías completadas">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span id="progressCount">0/7</span>
+                    </div>
+                    <button type="button" class="icon-btn" id="themeToggle" aria-label="Cambiar entre modo claro y oscuro" aria-pressed="false">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
         </header>
 
-        <section class="method-explanation">
-            <h3>¿Qué es el método CAWPILE?</h3>
-            <p>CAWPILE es un sistema para valorar libros y películas de manera estructurada evaluando 7 categorías:</p>
-            <ul>
-                <li><span class="acronym">C</span><strong>haracters</strong> (Personajes) - Desarrollo, profundidad y
-                    credibilidad.</li>
-                <li><span class="acronym">A</span><strong>tmosphere</strong> (Atmósfera) - Ambiente, mundo y sensaciones
-                    que evoca.</li>
-                <li><span class="acronym">W</span><strong>riting / Dirección</strong> - Calidad narrativa o
-                    cinematográfica.</li>
-                <li><span class="acronym">P</span><strong>lot</strong> (Trama) - Estructura, coherencia y desarrollo de
-                    la historia.</li>
-                <li><span class="acronym">I</span><strong>ntrigue</strong> (Intriga) - Capacidad de mantener el interés
-                    y la curiosidad.</li>
-                <li><span class="acronym">L</span><strong>ogic</strong> (Lógica) - Consistencia interna y credibilidad
-                    de los eventos.</li>
-                <li><span class="acronym">E</span><strong>njoyment</strong> (Disfrute) - Placer personal experimentado.
-                </li>
-            </ul>
-        </section>
+        <main class="container">
+            <!-- HERO -->
+            <section class="hero">
+                <p class="hero-eyebrow"><i class="fa-solid fa-feather-pointed"></i> Método en 7 dimensiones</p>
+                <h1>Valora lo que lees<br>y lo que ves</h1>
+                <p class="hero-sub">Desliza, puntúa del 1 al 10 y obtén tu nota final sobre 5.</p>
+                <div class="hero-chips">
+                    <span><i class="fa-solid fa-book-open"></i> Libros</span>
+                    <span><i class="fa-solid fa-clapperboard"></i> Pelis</span>
+                    <span><i class="fa-solid fa-stopwatch"></i> ~1 min</span>
+                </div>
+            </section>
 
-        <form id="cawpileForm">
-            <div class="calculator-form">
-                <div class="form-group">
-                    <label for="characters"><span class="category-name">C: Personajes</span></label>
-                    <input type="number" id="characters" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
-                        required>
+            <!-- ACORDEÓN MÉTODO -->
+            <section class="accordion" id="methodAccordion">
+                <button type="button" class="accordion-header" id="accordionBtn" aria-expanded="false" aria-controls="accordionPanel">
+                    <span class="accordion-titles">
+                        <strong>¿Qué es el método CAWPILE?</strong>
+                        <small id="accordionHint">Toca para ver las 7 categorías</small>
+                    </span>
+                    <span class="accordion-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+                </button>
+                <div class="accordion-panel" id="accordionPanel" role="region" aria-labelledby="accordionBtn">
+                    <p class="accordion-intro">Valora cada categoría de 1 a 10. La media es tu nota sobre 10, dividida entre 2 para la nota sobre 5.</p>
+                    <ul class="method-list">
+                        <li>
+                            <span class="tab-badge" data-cat="C">C</span>
+                            <div><strong>Characters <em>· Personajes</em></strong><span>Desarrollo, profundidad y credibilidad.</span></div>
+                        </li>
+                        <li>
+                            <span class="tab-badge" data-cat="A">A</span>
+                            <div><strong>Atmosphere <em>· Atmósfera</em></strong><span>Ambiente, mundo y sensaciones que evoca.</span></div>
+                        </li>
+                        <li>
+                            <span class="tab-badge" data-cat="W">W</span>
+                            <div><strong>Writing <em>· Escritura / Dirección</em></strong><span>Calidad narrativa o cinematográfica.</span></div>
+                        </li>
+                        <li>
+                            <span class="tab-badge" data-cat="P">P</span>
+                            <div><strong>Plot <em>· Trama</em></strong><span>Estructura, coherencia y desarrollo.</span></div>
+                        </li>
+                        <li>
+                            <span class="tab-badge" data-cat="I">I</span>
+                            <div><strong>Intrigue <em>· Intriga</em></strong><span>Capacidad de mantener el interés.</span></div>
+                        </li>
+                        <li>
+                            <span class="tab-badge" data-cat="L">L</span>
+                            <div><strong>Logic <em>· Lógica</em></strong><span>Consistencia interna y credibilidad.</span></div>
+                        </li>
+                        <li>
+                            <span class="tab-badge" data-cat="E">E</span>
+                            <div><strong>Enjoyment <em>· Disfrute</em></strong><span>Placer personal experimentado.</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FORM -->
+            <form id="cawpileForm" novalidate>
+                <div class="section-head">
+                    <h2>Tus notas</h2>
+                    <button type="button" class="link-btn" id="fillExampleBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Probar ejemplo</button>
                 </div>
 
-                <div class="form-group">
-                    <label for="atmosphere"><span class="category-name">A: Atmósfera</span></label>
-                    <input type="number" id="atmosphere" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
-                        required>
+                <div class="cards" id="cardsContainer"><!-- generado por JS --></div>
+
+                <div class="error-message" id="errorMessage" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>Completa las 7 categorías con notas entre 1 y 10.</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="writing"><span class="category-name">W: Escritura/Dirección</span></label>
-                    <input type="number" id="writing" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
-                        required>
+                <div class="actions">
+                    <button type="button" id="calculateBtn" class="btn-primary">
+                        <i class="fa-solid fa-calculator"></i> Calcular puntuación
+                    </button>
+                    <button type="button" id="resetBtn" class="btn-ghost">
+                        <i class="fa-solid fa-rotate-left"></i> Restablecer
+                    </button>
                 </div>
+            </form>
 
-                <div class="form-group">
-                    <label for="plot"><span class="category-name">P: Trama</span></label>
-                    <input type="number" id="plot" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10" required>
+            <!-- RESULTADO ÚNICO -->
+            <section class="result" id="resultContainer" aria-live="polite">
+                <div class="result-card">
+                    <div class="result-top">
+                        <span class="result-kicker"><i class="fa-solid fa-trophy"></i> Tu puntuación CAWPILE</span>
+                        <button type="button" class="icon-btn sm" id="copyBtn" title="Copiar resultado"><i class="fa-solid fa-copy"></i></button>
+                    </div>
+
+                    <div class="result-main">
+                        <div class="score-ring-wrap">
+                            <svg class="score-ring" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="score-ring-bg" cx="60" cy="60" r="52"></circle>
+                                <circle class="score-ring-fill" id="scoreRingFill" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="score-big">
+                                <span id="score5">0.0</span>
+                                <small>/5</small>
+                            </div>
+                        </div>
+                        <div class="result-meta">
+                            <div class="stars" id="starsRow" aria-label="Valoración en estrellas"></div>
+                            <p class="verdict" id="verdictText">—</p>
+                            <p class="score-sec"><strong id="score10">0.0</strong> /10 de media en las 7 categorías</p>
+                        </div>
+                    </div>
+
+                    <div class="breakdown" id="breakdownList"></div>
+
+                    <p class="copy-hint" id="copyHint"><i class="fa-solid fa-check"></i> ¡Copiado al portapapeles!</p>
                 </div>
+            </section>
 
-                <div class="form-group">
-                    <label for="intrigue"><span class="category-name">I: Intriga</span></label>
-                    <input type="number" id="intrigue" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
-                        required>
-                </div>
-
-                <div class="form-group">
-                    <label for="logic"><span class="category-name">L: Lógica</span></label>
-                    <input type="number" id="logic" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="enjoyment"><span class="category-name">E: Disfrute</span></label>
-                    <input type="number" id="enjoyment" min="1" max="10" step="0.1" placeholder="Nota del 1 al 10"
-                        required>
-                </div>
-            </div>
-
-            <div class="scale-selector">
-                <div class="scale-option">
-                    <input type="radio" id="scale10" name="scale" value="10" checked>
-                    <label for="scale10">Resultado sobre 10</label>
-                </div>
-                <div class="scale-option">
-                    <input type="radio" id="scale5" name="scale" value="5">
-                    <label for="scale5">Resultado sobre 5</label>
-                </div>
-            </div>
-
-            <div class="buttons">
-                <button type="button" id="calculateBtn">Calcular puntuación</button>
-                <button type="button" id="resetBtn">Restablecer</button>
-            </div>
-
-            <div class="error-message" id="errorMessage">
-                Por favor, asegúrate de que todas las notas estén entre 1 y 10.
-            </div>
-        </form>
-
-        <div class="result-container" id="resultContainer">
-            <h2 class="result-title">Tu puntuación CAWPILE</h2>
-            <div class="score-container">
-                <div class="score-box score-10">
-                    <div class="score-label">Puntuación sobre 10</div>
-                    <div class="score-value" id="score10">0.0</div>
-                    <div class="score-description">Promedio de las 7 categorías</div>
-                </div>
-                <div class="score-box score-5">
-                    <div class="score-label">Puntuación sobre 5</div>
-                    <div class="score-value" id="score5">0.0</div>
-                    <div class="score-description">Puntuación sobre 10 dividida entre 2</div>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>CAWPILE Calculator v1.0 - Método de valoración para libros y películas</p>
-            <p>Introduce notas del 1 al 10 en cada categoría y obtén tu puntuación promedio.</p>
-            <p>Creado por <a href="https://github.com/hugossanchezz" target="_blank">Hugo Sánchez</a> & 
-                <a href="https://chat.deepseek.com/" target="_blank">Deepseek</p>
-        </footer>
+            <footer class="footer">
+                <p><strong>CAWPILE Calculator</strong> · v1.2</p>
+                <p class="muted">Introduce notas del 1 al 10 en cada categoría y obtén tu media.</p>
+                <p class="muted">Creado por <a href="https://github.com/hugossanchezz" target="_blank" rel="noopener">Hugo Sánchez <i class="fa-brands fa-github"></i></a></p>
+            </footer>
+        </main>
     </div>
-
     <script src="./cawpile.js"></script>
 </body>
-
 </html>
