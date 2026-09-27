@@ -45,7 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="cat-value-max">/10</span>
         </div>
       </div>
-      <input type="range" class="cat-range" id="range-${c.id}" min="1" max="10" step="0.5" value="5" aria-label="${c.name}, deslizador táctil">
+      <div class="cat-control-row">
+        <button type="button" class="step-btn" data-target="${c.id}" data-step="-0.5" aria-label="Bajar 0.5 en ${c.name}"><i class="fa-solid fa-minus"></i></button>
+        <input type="range" class="cat-range" id="range-${c.id}" min="1" max="10" step="0.5" value="5" aria-label="${c.name}, deslizador: desliza en horizontal para cambiar la nota">
+        <button type="button" class="step-btn" data-target="${c.id}" data-step="0.5" aria-label="Subir 0.5 en ${c.name}"><i class="fa-solid fa-plus"></i></button>
+      </div>
     </article>
   `).join('');
 
@@ -118,6 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
     s.range.addEventListener('input', () => { paintRange(s.range); syncFromRange(s); });
     s.num.addEventListener('input', () => syncFromNumber(s));
     s.num.addEventListener('change', () => syncFromNumber(s));
+  });
+
+  // Botones -/+ : alternativa precisa al drag, no interfiere nunca con el scroll.
+  cardsContainer.querySelectorAll('.step-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const s = state[btn.dataset.target];
+      if (!s) return;
+      const cur = isValid(s.num.value) ? toNum(s.num.value) : parseFloat(s.range.value) || 5;
+      const next = Math.min(10, Math.max(1, Math.round((cur + parseFloat(btn.dataset.step)) * 2) / 2));
+      s.range.value = next;
+      paintRange(s.range);
+      syncFromRange(s);
+    });
   });
 
   function completedCount() {
