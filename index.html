@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="CAWPILE Calculator - Valora libros y películas de forma estructurada en 7 categorías.">
-    <meta name="theme-color" content="#FF6F59">
+    <meta name="description"
+        content="CAWPILE Calculator - Valora libros y películas de forma estructurada en 7 categorías.">
+    <meta name="theme-color" content="#1b1a2e">
     <title>CAWPILE · Valora libros y películas</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="./cawpile.css">
 </head>
+
 <body>
     <div class="app-shell">
         <!-- TOP BAR -->
@@ -29,9 +38,6 @@
                         <i class="fa-solid fa-list-check"></i>
                         <span id="progressCount">0/7</span>
                     </div>
-                    <button type="button" class="icon-btn" id="themeToggle" aria-label="Cambiar entre modo claro y oscuro" aria-pressed="false">
-                        <i class="fa-solid fa-moon" id="themeIcon"></i>
-                    </button>
                 </div>
             </div>
             <div class="progress-track" aria-hidden="true">
@@ -42,9 +48,7 @@
         <main class="container">
             <!-- HERO -->
             <section class="hero">
-                <p class="hero-eyebrow"><i class="fa-solid fa-feather-pointed"></i> Método en 7 dimensiones</p>
-                <h1>Valora lo que lees<br>y lo que ves</h1>
-                <p class="hero-sub">Desliza, puntúa del 1 al 10 y obtén tu nota final sobre 5.</p>
+                <h1>Valora lo que lees y ves</h1>
                 <div class="hero-chips">
                     <span><i class="fa-solid fa-book-open"></i> Libros</span>
                     <span><i class="fa-solid fa-clapperboard"></i> Pelis</span>
@@ -54,7 +58,8 @@
 
             <!-- ACORDEÓN MÉTODO -->
             <section class="accordion" id="methodAccordion">
-                <button type="button" class="accordion-header" id="accordionBtn" aria-expanded="false" aria-controls="accordionPanel">
+                <button type="button" class="accordion-header" id="accordionBtn" aria-expanded="false"
+                    aria-controls="accordionPanel">
                     <span class="accordion-titles">
                         <strong>¿Qué es el método CAWPILE?</strong>
                         <small id="accordionHint">Toca para ver las 7 categorías</small>
@@ -62,35 +67,43 @@
                     <span class="accordion-chevron"><i class="fa-solid fa-chevron-down"></i></span>
                 </button>
                 <div class="accordion-panel" id="accordionPanel" role="region" aria-labelledby="accordionBtn">
-                    <p class="accordion-intro">Valora cada categoría de 1 a 10. La media es tu nota sobre 10, dividida entre 2 para la nota sobre 5.</p>
+                    <p class="accordion-intro">Valora cada categoría de 1 a 10. La media es tu nota sobre 10, dividida
+                        entre 2 para la nota sobre 5.</p>
                     <ul class="method-list">
                         <li>
                             <span class="tab-badge" data-cat="C">C</span>
-                            <div><strong>Characters <em>· Personajes</em></strong><span>Desarrollo, profundidad y credibilidad.</span></div>
+                            <div><strong>Characters <em>· Personajes</em></strong><span>Desarrollo, profundidad y
+                                    credibilidad.</span></div>
                         </li>
                         <li>
                             <span class="tab-badge" data-cat="A">A</span>
-                            <div><strong>Atmosphere <em>· Atmósfera</em></strong><span>Ambiente, mundo y sensaciones que evoca.</span></div>
+                            <div><strong>Atmosphere <em>· Atmósfera</em></strong><span>Ambiente, mundo y sensaciones que
+                                    evoca.</span></div>
                         </li>
                         <li>
                             <span class="tab-badge" data-cat="W">W</span>
-                            <div><strong>Writing <em>· Escritura / Dirección</em></strong><span>Calidad narrativa o cinematográfica.</span></div>
+                            <div><strong>Writing <em>· Escritura / Dirección</em></strong><span>Calidad narrativa o
+                                    cinematográfica.</span></div>
                         </li>
                         <li>
                             <span class="tab-badge" data-cat="P">P</span>
-                            <div><strong>Plot <em>· Trama</em></strong><span>Estructura, coherencia y desarrollo.</span></div>
+                            <div><strong>Plot <em>· Trama</em></strong><span>Estructura, coherencia y desarrollo.</span>
+                            </div>
                         </li>
                         <li>
                             <span class="tab-badge" data-cat="I">I</span>
-                            <div><strong>Intrigue <em>· Intriga</em></strong><span>Capacidad de mantener el interés.</span></div>
+                            <div><strong>Intrigue <em>· Intriga</em></strong><span>Capacidad de mantener el
+                                    interés.</span></div>
                         </li>
                         <li>
                             <span class="tab-badge" data-cat="L">L</span>
-                            <div><strong>Logic <em>· Lógica</em></strong><span>Consistencia interna y credibilidad.</span></div>
+                            <div><strong>Logic <em>· Lógica</em></strong><span>Consistencia interna y
+                                    credibilidad.</span></div>
                         </li>
                         <li>
                             <span class="tab-badge" data-cat="E">E</span>
-                            <div><strong>Enjoyment <em>· Disfrute</em></strong><span>Placer personal experimentado.</span></div>
+                            <div><strong>Enjoyment <em>· Disfrute</em></strong><span>Placer personal
+                                    experimentado.</span></div>
                         </li>
                     </ul>
                 </div>
@@ -100,7 +113,8 @@
             <form id="cawpileForm" novalidate>
                 <div class="section-head">
                     <h2>Tus notas</h2>
-                    <button type="button" class="link-btn" id="fillExampleBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Probar ejemplo</button>
+                    <button type="button" class="link-btn" id="fillExampleBtn"><i
+                            class="fa-solid fa-wand-magic-sparkles"></i> Probar ejemplo</button>
                 </div>
 
                 <div class="cards" id="cardsContainer"><!-- generado por JS --></div>
@@ -125,7 +139,9 @@
                 <div class="result-card">
                     <div class="result-top">
                         <span class="result-kicker"><i class="fa-solid fa-trophy"></i> Tu puntuación CAWPILE</span>
-                        <button type="button" class="icon-btn sm" id="copyBtn" title="Copiar resultado"><i class="fa-solid fa-copy"></i></button>
+                        <button type="button" class="icon-btn sm" id="copyBtn" title="Copiar resultado">
+                            Copiar<i class="fa-solid fa-copy"></i>
+                        </button>
                     </div>
 
                     <div class="result-main">
@@ -154,11 +170,12 @@
 
             <footer class="footer">
                 <p><strong>CAWPILE Calculator</strong> · v1.2</p>
-                <p class="muted">Introduce notas del 1 al 10 en cada categoría y obtén tu media.</p>
-                <p class="muted">Creado por <a href="https://github.com/hugossanchezz" target="_blank" rel="noopener">Hugo Sánchez <i class="fa-brands fa-github"></i></a></p>
+                <p class="muted">Creado por <a href="https://github.com/hugossanchezz" target="_blank"
+                        rel="noopener">Hugo Sánchez <i class="fa-brands fa-github"></i></a></p>
             </footer>
         </main>
     </div>
     <script src="./cawpile.js"></script>
 </body>
+
 </html>

@@ -254,24 +254,5 @@ document.addEventListener('DOMContentLoaded', () => {
   accBtn.addEventListener('click', () => setAccordion(!accordion.classList.contains('open')));
   setAccordion(false);
 
-  // ---------- Tema claro / oscuro ----------
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
-  const root = document.documentElement;
-  function applyTheme(t) {
-    root.setAttribute('data-theme', t);
-    const dark = t === 'dark';
-    themeIcon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-    themeToggle.setAttribute('aria-pressed', String(dark));
-    try { localStorage.setItem('cawpile-theme', t); } catch {}
-  }
-  let saved = 'light';
-  try { saved = localStorage.getItem('cawpile-theme') || saved; } catch {}
-  if (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) saved = 'dark';
-  applyTheme(saved);
-  themeToggle.addEventListener('click', () => {
-    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-  });
-
   updateProgress();
 });
